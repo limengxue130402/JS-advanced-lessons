@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //发反写
+    var a = 45;
+    if(45 == a){ 
+        console.log("判等")
+    }
+
+
+    //== ===
+    var a1 = 20;
+    var a2 = "20";
+    //隐式的类型转换
+    if(a1 == a2){
+        console.log("数值得判等")
+    }
+     //===先判断类型，然后再判断值
+    if(a1 === a2){
+        console.log("类型的判等")
+    }
+
+    //++x 先进行运算，然后输出
+    //x++ 先输出，然后再运算
+     var a3 = "1";
+     //console.log(a3++);结果为1
+     //console.log(++a3);//结果为2，若第33行不注释掉，结果为3
+     console.log(a3 += 1);//字符串的拼接
+
+     // 逻辑运算符
+     console.log(20 && 0);
+     console.log(null && 10);
+
+
+     //&&与||在实际中的应用
+     var score = 76;
+     if(score > 90){
+         console.log("优");
+     }
+     else if(score > 75){
+         console.log("良");
+     }
+     else if(score >60){
+         console.log("及格");
+     }
+     else{
+         console.log("不及格");
+     }
+     //通过&&和||的组合实现如上功能，注：小括号优先级最高
+     console.log((score > 90 && "优")||(score > 75 && "良")||(score > 60 && "及格")||"不及格");
+     //switch case 
+     switch(true){
+        case score > 90:
+            console.log("优");
+            break;
+        case score > 75:
+            console.log("良");
+            break;
+        case score > 60:
+            console.log("及格");
+            break;
+        case score < 60:
+            console.log("不及格");
+            break;
+     }
+
+
+
+     //定义函数的形参和调用函数的实参个数可以不一致
+     function sum(x, y, z){
+        x = x || 1;
+        y = y || 2;
+        z = z || 3;
+        return x + y + z;
+     }
+     console.log(sum(4,5,6));
+     //ES6中设置的函数默认值
+     function sum1(x, y = 2, z = 3){
+         return x + y + z;
+     }
+
+
+
+
+     //函数的声明方式
+     function sum3(x, y){
+         return x + y;
+     }
+     sum3(1,2);
+
+     //匿名函数
+     window.onload = function(){
+         alert("页面加载完成");
+     }
+
+     //将函数定义到变量中
+     var sum4 = function(x, y){
+         return x + y;
+     }
+     sum4(1,2);
+     //使用function构造函数来实例化得到一个F unction
+     //Function实例化的函数，执行效率相对较低，但是更加灵活
+     var fn1 = new Function('x','y','return x + y');
+     fn1(1,2);
+</script>
+</html>
