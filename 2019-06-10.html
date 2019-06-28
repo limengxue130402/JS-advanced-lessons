@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<!-- <script>
+    /*
+        Symbol生成的变量时唯一的
+    */
+    // let s1 = Symbol("s1");
+    // let s2 = Symbol("s2");
+    // let s3 = Symbol("s3");
+    // console.log(s1 == s3);//false
+
+    let s1 = Symbol("for");
+    console.log(Symbol.for("foo") == Symbol.for("foo"));//true
+
+
+    //set中不会有重复值
+    let s1 = new Set([1, 2, 3, 4, 5]);
+
+
+
+    class Point{
+        constructor(){
+            this.x = 1;
+        }
+        static showPoint(){
+            console.log(this);
+        }
+    }
+    Point.showPoint();
+
+
+
+    
+</script> -->
+
+
+
+<script>
+    /*继承的实现方式
+        子类继承父类 extends
+        在子类的构造函数里面super指向父类的构造函数
+        继承的子类构造函数中，必须在super()调用后才能使用this
+        super在子类的原型方法中，指向父类的prototype
+    */
+    let obj1 = {"x": 1};
+    let obj2 = Object.create(obj1);
+    console.log(obj2.x);
+
+    let obj3 = {"y": 2};
+    // obj4.__proto__ = obj3;
+
+
+    function fn1(){
+        this.x = 1;
+    }
+    fn1.prototype.show = function(){
+        console.log(this.x);
+    }
+    let obj5 = new fn1();
+
+
+
+    function Child(x, y){
+        this.x = x;
+        this.y = y;
+    }
+    function Parent(x, y, z){
+        Child.call(this, x, z);
+        this.z = z;
+    }
+    let p1 = new Parent(1, 2, 3);
+    console.log(p1);
+</script>
+</html>

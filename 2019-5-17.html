@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            background: #ddd;
+            margin-top: 10px; 
+        }
+        #container{
+            height: 400px;
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid red;
+        }
+        #img1{
+            width: 150px;
+        }
+        #btnlist{
+            width:1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- <table id="tb1" width="400" height="400" border="1" align="center">
+        <tr class="even">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>          
+        </tr>
+        <tr class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>          
+        </tr>
+        <tr class="even">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>          
+        </tr>
+        <tr class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>          
+        </tr>
+    </table> -->
+
+
+    <!-- <input type="text"/>
+    <input type="file"/>
+    <input type="button"/>
+    <input type="submit"/>
+    <input type="checkbox"/> -->
+
+
+
+
+    <!-- jquery事件 -->
+    <!-- <input type="button" value="绑定点击事件" id="btn1"/>
+    <input type="button" value="绑定点击事件" id="btn2"/>
+    <input type="button" value="绑定点击事件" id="btn3"/> -->
+
+
+
+    <!-- <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558658844&di=27ea23b07d329f0980e82ce32c63865c&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201409%2F15%2F20140915152536_TmiXT.png"> -->
+
+
+
+
+    <!-- <div>层1</div>
+    <div>层2</div>
+    <div>层3</div> -->
+
+
+    <!-- <table>
+        <tr>
+            <td>用户名：</td>
+            <td>
+                <input type="text" name="username" id="username"/>
+            </td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="password" name="pwd" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="登录"/>
+            </td>
+        </tr>
+    </table> -->
+
+
+
+
+    <div id="container">
+        <img id="img1" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558658844&di=27ea23b07d329f0980e82ce32c63865c&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201409%2F15%2F20140915152536_TmiXT.png">
+    </div>
+    <div id="btnlist">
+        <button id="after">after</button>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<!-- 表格元素 -->
+<!-- <script>
+    //过滤选择器
+    $("td:first").css("background","blue");
+    $("td:last").css("background","green");
+    $("td:even").css("background","blue");//奇数
+    $("td:odd").css("background","purple");//偶数
+
+    /*
+        eq(index) 选中特定索引值的元素
+        ge(index) 选中索引值大于index的元素
+        lt(index) 选中索引值小于index的元素
+        not(selector) 从特定集合中排除一些元素
+    */
+    $("td:eq(0)").css("background","black");
+    $("td:gt(1)").css("background","yellowgreen");
+    $("td:lt(1)").css("background","orange");
+    $("td:not(#td1)").css("background","pink");
+</script> -->
+
+
+<!-- 表单元素 -->
+<!-- <script>
+    $(":text").css("background","red");
+</script> -->
+
+
+
+<!-- jquery事件 -->
+<!-- <script>
+    /*
+        jquery包装集.事件方法(回调函数)
+    */
+    $("#btn1").click(function(){
+        alert("按钮被点击了！");
+    })
+    $(":button").click(function(){
+        alert("按钮被点击了！");
+    })
+</script> -->
+
+
+<!-- 图片 -->
+<!-- <script>
+    $("img").mouseover(function(){
+        $(this).css("border","10px solid red");
+    }) 
+</script>-->
+
+
+
+<!-- div的操作 -->
+<!-- <script>
+    $("div").mouseover(function(){
+        $(this).css("background","blue");
+    })
+    $("div").mouseout(function(){
+        $(this).css("background","#ddd");
+    }).click(function(){
+        $(this).css("background","red");
+    })
+
+</script> -->
+
+
+
+
+<!-- DOM节点的操作 -->
+<!-- <script>
+    /*
+        $(选择器).val();
+        $("html标记")
+        $(选择器).append(); 向选中元素内部添加一个新元素
+        $(选择器).remove();将特定元素从页面结构中移除
+    */
+    $("#username").blur(function(){
+        var inputVal = $(this).val();//获取文本框中的内容
+        var errorTip = $("<span class='error'>用户名不能为空</span>");//创建一个新的节点
+        if(inputVal == ""){
+            $(this).parent().append(errorTip);
+        }
+        else{
+            $(".error").remove();
+        }
+    })
+</script> -->
+</html>

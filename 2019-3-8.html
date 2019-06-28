@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //'use strict'//对当前页面的所有JavaScript都使用严格模式
+    function fn1(){
+        'use strict'//对函数内部代码应用严格模式，函数外不使用严格模式
+    }
+
+    //ES5 是ECMAScript简写，是语言标准
+    //ES5 ES6 这时ECMAScript最主流的两个版本
+    //JavaScript在ES5中没有块作用域
+    if(false) {
+        var a = 1;
+    }
+   // a = 2;
+    console.log(a);
+
+    for(var i = 0; i < 3; i++){
+
+    }
+    console.log(i);//结果为3，块级作用域
+
+    
+    function fn2(){
+        //严格模式下的代码
+        'use strict'//解决自动提升为全局变量的方法
+        var username = "lisi";//严格模式下，变量必须进行显示声明
+
+
+        //非严格模式下
+        username = "zhangsan";//如果变量不使用var声明，
+                              //会自动提升为全局变量（是JavaScript中的一个最大的缺陷）
+    }
+    fn2();
+    console.log(username);
+
+
+    function fn3(){
+        console.log(this);//非严格模式下，普通函数的内部this指向window对象
+                          //严格模式下，this指向undefined
+    }
+
+
+    function fn4(){
+       // 'use strict'严格模式下结果为true，在非严格模式下为undefined
+        var result = (this === undefined ? true : false);
+        return result;
+    }
+    console.log(fn4());
+
+
+    var str = "abcdef";
+    str.length = 1;//字符串的length是只读属性，在严格模式下改变length的值，编译器会报错
+    //var strObject = new String(str);
+    //strObject.length = 1;
+    console.log(str.length);
+
+
+    var index = 1;
+    switch(index){//比较的不仅仅是值，而是值和类型
+        case 1:
+            console.log("星期一");
+            break;
+        case 2:
+            console.log("星期二");
+            break;
+        case 3:
+            console.log("星期三");
+        default: 
+            console.log("均不符合");
+    }
+
+
+    //for in 遍历数组不推荐方式
+    var obj1 = {"username" : "zhangsan" , "age" : 20};
+    obj1.__proto__.sex = "male";
+    for(var i in obj1){
+        console.log(i, obj1[i]);
+    }
+
+</script>
+</html>

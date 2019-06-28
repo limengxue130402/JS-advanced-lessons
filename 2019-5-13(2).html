@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="mybody">
+    <table id="tb1" width="400" height="400" border="1" align="center">
+        <tr class="even">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>          
+        </tr>
+        <tr class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>          
+        </tr>
+        <tr class="even">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>          
+        </tr>
+        <tr class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>          
+        </tr>
+    </table>
+    <table width="400" height="400" border="1" align="center">
+            <tr class="even">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>          
+            </tr>
+            <tr class="odd">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>          
+            </tr>
+            <tr class="even">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>          
+            </tr>
+            <tr class="odd">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>          
+            </tr>
+        </table>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    /*
+        所有的jQuery必须要引用jQuery库
+        jquery.min.js压缩版的，一般用于生产环境
+        jquery.js 未压缩，一般用于开发环境
+    */
+    /*
+        $(jquery选择器).css("属性","属性值")————jQuery包装集
+        选择器：id选择器、类选择器、标签选择器、层级选择器、后代选择器、子选择器
+    */
+    //$(".even").css("background","red");
+    $("#tb1 .even").css("background","red");
+
+</script>
+</html>

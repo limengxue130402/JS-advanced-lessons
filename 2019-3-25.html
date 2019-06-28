@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1" style="width:100px; height:50px"></div>
+</body>
+<script>
+    console.log("小明回家");
+    var xx = ["书桌","书包","铅笔盒"];//小明家中
+    console.log("在家-做作业中");
+    function goToStore(){
+        var yy = ["文具店老板","出售的文具"];//文具商店中
+        console.log("在文具店买-买文具中");
+        console.log("在文具店-买文具中  发现没带钱");
+        goToBank();
+        console.log("在文具店-买好文具  返回家");
+    }
+    function goToBank(){
+        var zz = ["银行职员","柜员机"];//银行中
+        console.log("在银行-取钱 返回文具店");
+    }
+    console.log("在家-做作业中 发现笔没油了");
+    goToStore();//笔没油了，去商店买笔
+    console.log("在家-继续做作业");
+
+
+    var div1 = document.getElementById("div1");
+    var username = "zhangsan";
+    function foo(){
+        div1.onclick = function(){
+            this.innerHTML = username;
+        }
+    }
+    foo();
+
+
+    (function(w,d){
+        w.onload = function(){
+
+        }
+    })(window.document)
+
+
+
+    //(function 函数名(参数){
+        //函数体
+    //}(实参)) 
+    //此时函数可以立即执行
+    (function max(x,y){
+        return x > y ? x : y;
+    }(2,3))
+
+
+
+    var userId = 2;
+    document.onclick = function(){
+        alert(userId);
+    }
+    (function(){
+        if(true){
+            var userId = 20;
+        }
+    })();
+
+
+    function foo(){
+        var arr1 = [];
+        for(var i = 0; i < 10; i ++){
+            arr1[i] = function(){
+                return i;
+            }
+        }
+        return arr1;
+    }
+    var arr2 = foo();
+    arr2[0]();
+
+
+
+
+    function foo(){
+        var arr1 = [];
+        for(var i = 0; i < 10; i ++){
+            //形成10个作用域，作用域内的j值各不相同，并且不共享
+            (function(j){
+                arr1[j] = function(){
+                    return j;
+                }
+            })(i)
+        }
+        return arr1;
+    }
+    var arr2 = foo();
+    arr[0]();
+
+
+    //立即执行函数表达式
+    //避免变量的污染，形成一个独立的空间，变量仅在该作用域内其作用
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //若创建了多个对象，且这些对象共享同一个原型链，当改变一个原型链时，其他的也会随之改变
+    var superObj ={
+        x: 1,
+        y: 2
+    };
+    var subObj_First = Object.create(superObj);
+    var subObj_Second = Object.create(superObj);
+    subObj_First.__proto__.x = 5;//改变的是原型链
+    console.log(subObj_Second.x);//5
+
+
+    function Person(name){
+        this.name = name;
+    }
+    Person.prototype.age = 21;
+    Person.prototype.showName = function(){
+        console.log(this.name);
+    }
+    function Student(id){
+        this.id = id;
+    }
+    Student.prototype = new Person("Mike");
+    /*
+        person name属性Mike, person.__proto__.age
+        person.__proto__.showName
+    */
+    var s1 = new Student(2017001);
+    var S2 = new Student(2017002);
+    console.log(s1.id,s2.id);
+    /*
+        s1自身上面没有age, s1.__proto__== Student.prototype
+        Student.prototype = person; person对象上没有age属性
+        s1.proto__.__proto__ == person.__proto__
+        person.__proto.__ == Person.prototype
+    */
+    console.log(s1.age,s2.age);
+
+
+
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    };
+    Person.prototype.showName = function(){
+        console.log(this.name);
+    };
+    function Student(name,age,id){
+        /*
+            Person.call 切换了Person函数内部this的指向
+        */
+        Person.call(this,name,age);
+        this.id = id;
+    }
+    Student.prototype.__proto__ = Person.prototype;
+    var s1 = new Student("xxx",22,2017001);
+    var s2 = new Student("yyy",21,2017002);
+
+
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype .showName = function(){
+        console.log(this.name);
+    }
+    function Student(name,age,id){
+        Person.call(this,name,age);
+        this.id = id;
+    }
+    Student.prototype = Object.create(Person.prototype);
+    Student.prototype.constructor = Student;
+    var s1 = new Student("xxx",22,2017001);
+    var s2 = new Student("yyy",21,2017002);
+</script>
+</html>

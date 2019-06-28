@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+
+</body>
+<script>
+    //基本数据类型，在操作过程中，会有启动装箱过程
+    //生成临时对象时，临时对象在使用完成后会自动释放
+    var num = 10;
+    num.toString();
+
+    var num = 10;
+    var numObject = new Number(num);
+    numObject.toString();
+
+    num.p = 10;
+    var t = num.p;
+    console.log(t);
+
+    //(小数).toFixed(数字);给小数保留即为小数
+    console.log((345.67).toFixed(1));
+
+    var num1 = 11.26;
+    var numObj2 =new Number(num1);
+    console.log(numObj2);
+
+    var n1 = 12345.6789;
+    console.log(n1.toFixed(2));//保留小数点后几位
+    console.log(n1.toPrecision(5));//科学计数法
+    console.log(n1.toString());//将数字转化为一个字符串
+    console.log(n1.toExponential(2));//
+
+
+    var str = "abcde";
+    console.log(str.charAt(0));//返回特定位置的索引字符
+    //装箱过程
+    var str1 = "abcdef";
+    var strObject = new String(str1);
+    strObject.charAt(2);
+
+    //"B".localeCompare("A");考虑本地化的字符排序，返回0或非0
+    console.log("B".localeCompare("F"));
+
+    //基本数据类型，变量__proto__属性 == 变量的protoType属性
+
+
+
+
+    //字符串
+    var str3 = "ab*ce*df*g";
+    str3.charAt(1);//返回特定索引位置的字符
+    str3.charCodeAt(0);//返回特定索引位置的字符的unicode码
+    str3.slice(1,-1);//slice(截取起始位置，截取的结束位置)
+    str3.substr(0,3);//substr(截取字符串起始位置，截取字符串的长度)
+    str3.substring(0,3);//sbuString(截取字符串起始位置，截取字符串的结束位置)；
+                        //当 起始值 > 结束值 互换位置
+                        //如果有超出索引位置0 - str.length-1 自动截断
+    str3.split("*");//split(特定的字符，数组限定元素个数)；将字符串以特定的字符分割，
+                    //将字符串作为数组匀速生成数组
+
+    var str4 = "   abc  d   ";
+    str4.trim();//trim()去除字符串两边的空白字符，字符串内部的不去除
+    
+    
+
+    //字符串连接
+    var a = "abc";
+    var b = "def";
+    var c = a+b;
+
+
+    //字符串常用方法，字符串的方法源于String.prototype
+    var st1 = "aaa".concat("bbb");//返回字符串 aaabbb
+    var st2 = "abcdef".slice(2);//cdef
+    var st3 = "abcdef".slice(2,5);//cde
+    var st4 = "abcdef".slice(-2);//ef
+    var st5 = "abcdef".slice(2,-2);//cd
+
+
+    var st6 = "abcdef".split("c");//返回数组 
+    var st7 = "abcdef".split("c",1);
+    var st8 = "abcdef".split("c",2);
+
+    console.log(st6);//["ab", "def"]
+    console.log(st7);//["ab"]
+    console.log(st8);//["ab", "def"]
+
+    //substr与substring的区别
+    var st9 = "abcdefghijklmn";
+    var st10 = str9.substr(2,5);//后一个参数代表长度
+    console.log(st9,st10);//st9 未受到破坏
+
+    var st11 = str9.substring(2,5);//后一个参数代表第几个end 
+    console.log(st9,st11);//st9 未受到破坏
+</script>
+</html>

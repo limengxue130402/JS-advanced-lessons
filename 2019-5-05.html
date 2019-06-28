@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    //forEach
+    var arr1 = ['a', 'b', 'c', 'd'];
+    /*
+        forEach(callback, thisArg);
+        callback(element, index, arr);
+        element遍历数组每次取到的数组元素值
+        index遍历数组每次取到的数组元素的索引
+        arr操作的数组
+        thisArg可以指明回调函数内部this的指向
+    */
+    arr1.forEach(function(element, index, arr2){
+        console.log(element, index, arr2);
+        /*
+            a 0 (4) ["a", "b", "c", "d"]
+            b 1 (4) ["a", "b", "c", "d"]
+            c 2 (4) ["a", "b", "c", "d"]
+            d 3 (4) ["a", "b", "c", "d"]
+        */
+        window.x = 10;
+    }, window);
+
+
+
+    //every
+    var arr3 = [10, 20, 30, 40];
+    /*
+        数组中的每个元素都必须满足条件
+    */
+    var result = arr3.every(function(value){
+        return value > 5;
+    });
+    console.log(result);//true
+
+
+
+    //map
+    var arr4 = [1, 2, 3];
+    /*
+        操作数组中的每一个元素，并生成一个新的数组
+    */
+    var arr5 = arr4.map(function(element){
+        return element * 2;
+    });
+    console.log(arr5);//[2, 4, 6]
+
+
+
+
+
+    var date1 = new Date();
+    var year = date1.getFullYear();
+    var month = date1.getMonth();
+    var date2 = new Date(year,month);
+    console.log(date2);//Wed May 01 2019 00:00:00 GMT+0800 (中国标准时间)
+
+
+    //指明事件日期的字符串,字符串形式很多样化
+    var date3 = new Date("2019-05-05");
+    console.log(date3);//Sun May 05 2019 08:00:00 GMT+0800 (中国标准时间)
+
+    //指明一个毫秒为单位的数字类型
+    var date4 = new Date(Date.now());
+    console.log(date4);///Sun May 05 2019 08:39:15 GMT+0800 (中国标准时间)
+
+
+    /*
+        本地时间：当前所处时区的标准时间
+        世界标准时：UTC（格林威治时间） GMT
+    */
+    var seconds = Date.parse("2019-05-05");
+    console.log(seconds);//1557014400000
+    var date5 = new Date(seconds);
+    console.log(date5);//Sun May 05 2019 08:00:00 GMT+0800 (中国标准时间)
+
+    var date6 = new Date();
+    var seconds2 = Date.parse(date6);
+    console.log(date5 > date6);//false
+
+
+
+    // YYYY-MM-DDTHH:mm:ss.sssZ
+    console.log(Date.parse("2010-01-01 11:12:23.111"));
+    console.log(new Date("2010-01-01 11:12:23.111"));
+    console.log(new Date().toISOString());
+
+    console.log(Date.parse("2010-01-01T11:12:23.111Z"));
+    console.log(new Date("2010-01-01T11:12:23.111Z"));
+    console.log(new Date().toISOString());
+
+    //日期格式（无时间）
+    console.log(new Date("2001"));
+    console.log(new Date("2001-02"));
+    console.log(new Date("2001-02-22"));
+
+    //日期和时间格式
+    console.log(new Date("1999-11-22T13:17"));
+    console.log(new Date("1999-11-22T13:17:11"));
+    console.log(new Date("1999-11-22T13:17:11.111"));
+    console.log(new Date("1999-11-22T13:17:11.111Z"));
+
+    //时间的比较和运算，内部转换为数字进行比较和运算（从1970年1月1日00:00:00开始计算）
+    console.log(new Date("1970-01-01").getTime());
+    console.log(new Date("1970-01-02").getTime());
+    console.log(new Date("1960-01-02").getTime());
+    console.log(new Date("1970-01-02") > new Date("1970-01-01"));
+    console.log(new Date("1970-01-02") - new Date("1970-01-01"));
+    console.log(new Date((new Date("1970-01-01").getTime())+86400000));
+
+
+
+
+
+    var reg1 = /[bcf]at/gi;
+    var reg2 = new RegExp("[bcf]at", "gi");
+    var reg3 = new RegExp(/[bcf]at/, "gi");
+    var str1 = 'fat Fat bat cat jdkfdj llo';
+    console.log(str1.match(reg1));//(4) ["fat", "Fat", "bat", "cat"]
+</script>
+</html>

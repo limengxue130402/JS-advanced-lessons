@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function fn(){
+        var arr1 = [];
+        for(var i = 0; i < 10; i ++){
+            //立即执行函数，每次执行都生成自己的作用域
+            //生成自己的作用域，保证变量只在自己的作用域起作用（避免变量的污染）
+            //避免变量的非期望共享
+            (function(j){
+                arr1[j] = function(){
+                    return j;
+                }
+            })(i)
+        }
+        return arr1;
+    }
+    fn();
+
+
+
+
+    for(var i = 0; i < 3; i ++){
+        (function(j){
+            setTimeout(function(){
+               console.log(new Date , j);   
+            },1000*i)
+        })(i);
+    }
+
+
+
+
+    //闭包
+    /*闭包带来的影响：
+    1：闭包让我们可以访问到函数内部定义的变量
+    2：闭包让关联作用域中的特定变量保持在内存中，不释放
+    */
+    //通过返回函数(fn1)内部定义的函数(fn2)来访问(fn1)内部的变量
+    function fn1(){
+        var x = 1;
+        function fn2(){
+            return ++x;
+        }
+        return fn2;
+    }
+    var fn3 = fn1();
+    console.log(fn3());//2
+    console.log(fn3());//3
+    //有闭包的存在不会释放;start会一直存在，不会被释放
+    //闭包：函数(addNum)内部定义的函数(return 匿名函数)
+    //与其相关作用域中的变量(start)形成的实体
+    //这种情况下start不会被释放一直保存在内存中
+    function addNum(start){
+        return function(step){
+            start += step;
+            return start;
+        }
+    }
+    var fn3 = addNum(10);
+    fn3(1);//11
+
+
+    function foo(){
+        var i = 0;
+        function bar(){
+            console.log(++i);
+        }
+        return bar;
+    }
+    var fn1 = foo();
+    var fn2 = foo();
+    fn1();
+    fn1();
+    fn2();
+    fn1();
+
+
+
+    var tmp =100;//注意词法作用域
+    function foo(x){
+        var tmp = 3;//注意词法作用域
+        return function(y){
+            console.log(x + y + (++tmp));
+        }
+    }
+    var fee = foo(2);//fee形成了一个闭包
+    fee(10);//16
+    fee(10);//17
+    fee(10);//18
+
+</script>
+</html>

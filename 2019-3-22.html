@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log(a);
+    if(true){
+        var a = 1;
+    }
+    console.log(a);
+
+
+    //foo()
+    console.log(foo);
+    //该种情况时，仅会对变量进行定义的提升
+    var foo = function(){
+        console.log();
+    }
+
+
+    //作用域,第十章
+    var a = 1;
+    function fn1(){
+        console.log(a);//1
+        var b = 2;
+        var c = 3;
+        function fn2(){
+            var c = 30;
+            var d = 4;
+            console.log(c);//30
+        }
+        fn2();
+        console.log(c);//报错
+        console.log(d);//报错
+    }
+    fn2();//报错
+    fn1();
+
+
+
+    //JS作用域的特点
+    //函数和变量在完成定义之后，作用域都是确定的
+    //和调用形式没有关系
+    var username = "bala";
+    function foo(){
+        username = "bill";
+        console.log(username);
+    }
+    function bar(){
+        var username = "mike";
+        foo();
+        console.log(username);
+    }
+    bar();
+
+
+
+    //ES6
+    if(true){
+        let b =3;//块级作用域
+    }
+    console.log(b);
+
+
+
+    //没有块级作用域的缺点·
+    var userId = 5;
+    document.onclick = function(){
+        console.log(userId);
+        userId = 10;
+    }
+    if(true){
+        var userId = 30;
+    }
+
+
+
+    
+    //上下文，当某行代码执行过程时，它的上下文环境，当前作用域所包含的变量
+    //函数调用栈、this的指向
+    var x = 5;
+    var y = 6;
+    function foo(){
+        var a = 1; 
+        var b = 2;
+        function bar(){
+            var c = 3;
+            var d = 4;
+        }
+        bar();
+    }
+    foo();
+</script>
+</html>
